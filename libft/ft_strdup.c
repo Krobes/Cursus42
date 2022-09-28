@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbonilla <rbonilla@42.fr>                  +#+  +:+       +#+        */
+/*   By: rbonilla <rbonilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 11:02:18 by rbonilla          #+#    #+#             */
-/*   Updated: 2022/09/28 11:03:38 by rbonilla         ###   ########.fr       */
+/*   Created: 2022/09/28 11:45:03 by rbonilla          #+#    #+#             */
+/*   Updated: 2022/09/28 12:10:14 by rbonilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
+#include "libft.h"
+
+char	*ft_strdup(const char *s1)
 {
-	int	i;
+	char	*s2;
+	int		i;
 
 	i = 0;
-	while (s[i])
+	while (s1[i])
+		i++;
+	s2 = malloc((i + 1) * sizeof(char));
+	if (!s2)
+		return (0);
+	i = 0;
+	while (s1[i])
 	{
-		if ((char)c == s[i])
-			return ((char *)&s[i]);
-		if ((char)c == 0 && s[i + 1] == 0)
-			return ((char *)&s[i + 1]);
+		s2[i] = s1[i];
 		i++;
 	}
-	if (c == 0)
-		return ((char *)s);
-	return (0);
+	s2[i] = '\0';
+	return (s2);
 }

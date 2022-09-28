@@ -6,7 +6,7 @@
 /*   By: rbonilla <rbonilla@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 10:34:32 by rbonilla          #+#    #+#             */
-/*   Updated: 2022/09/23 11:13:02 by rbonilla         ###   ########.fr       */
+/*   Updated: 2022/09/27 11:41:14 by rbonilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	if (!dst && !src)
 		return (0);
-	if ((dst == src) || (src == 0))
+	if (dst == src)
 		return (dst);
 	while (n > 0)
 	{

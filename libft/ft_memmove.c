@@ -6,41 +6,36 @@
 /*   By: rbonilla <rbonilla@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 12:25:09 by rbonilla          #+#    #+#             */
-/*   Updated: 2022/09/27 10:02:33 by rbonilla         ###   ########.fr       */
+/*   Updated: 2022/09/28 10:53:53 by rbonilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*int	main(void)
-{
-	char	dst[15] = "Hola";
-	const char	*src = "adios";
-	size_t	len = 3;
-
-	printf("%s", memmove(dst, src, len));	
-}*/
-
-
 void	*ft_memmove(void *dst, const void *src, size_t n)
 {
-	size_t	a;
-	size_t	b;
+	size_t	i;
 
-	a = 0;
-	b = 0;
-	while (dst)
-		a++;
-	if (n == 0)
-		return(dst);
-	else if (n <= a)
+	i = 0;
+	if (!src && !dst)
+		return (NULL);
+	if (src < dst)
 	{
-		while (n > 0 || src)
+		while (i < n)
 		{
-			((unsigned char	*)dst)[b] = ((unsigned char *)src)[b];
+			((unsigned char *)dst)[n - 1] = ((unsigned char *)src)[n - 1];
 			n--;
-			b++;
 		}
-	}	
-	return(dst);
+		return (dst);
+	}
+	else
+	{
+		while (n > 0)
+		{
+			((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+			n--;
+			i++;
+		}
+		return (dst);
+	}
 }

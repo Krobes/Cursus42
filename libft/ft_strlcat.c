@@ -6,7 +6,7 @@
 /*   By: rbonilla <rbonilla@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 09:41:53 by rbonilla          #+#    #+#             */
-/*   Updated: 2022/09/23 14:28:07 by rbonilla         ###   ########.fr       */
+/*   Updated: 2022/09/28 10:47:20 by rbonilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t i;
-	size_t n;
+	size_t	i;
+	size_t	n;
 	size_t	j;
 
 	i = 0;
 	j = 0;
-	n = 0;	
-	if(dstsize == 0)
+	n = 0;
+	if (dstsize == 0)
 		return (ft_strlen(src));
-	if(dstsize < ft_strlen(dst))
+	if (dstsize < ft_strlen(dst))
 		n = dstsize + ft_strlen(src);
 	else
 		n = ft_strlen(src) + ft_strlen(dst);
-	while(dst[i])
+	while (dst[i])
 		i++;
-	while(i < dstsize - 1 && src[j] != 0)
+	while (i < dstsize - 1 && src[j] != 0)
 	{
 		dst[i] = src[j];
 		i++;

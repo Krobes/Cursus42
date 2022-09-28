@@ -6,7 +6,7 @@
 /*   By: rbonilla <rbonilla@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:47:34 by rbonilla          #+#    #+#             */
-/*   Updated: 2022/09/23 12:35:13 by rbonilla         ###   ########.fr       */
+/*   Updated: 2022/09/28 11:04:51 by rbonilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ char	*ft_strrchr(const char *s, int c)
 		i++;
 	while (i >= 0)
 	{
-		if (c == s[i])
+		if ((char)c == s[i])
 			return ((char *)&s[i]);
 		i--;
 	}
-	if (c == 0)
+	if ((char)c == 0)
 		return ((char *)s);
 	return (0);
 }

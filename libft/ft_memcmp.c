@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbonilla <rbonilla@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 13:13:33 by rbonilla          #+#    #+#             */
-/*   Updated: 2022/09/28 10:42:18 by rbonilla         ###   ########.fr       */
+/*   Created: 2022/09/27 12:15:02 by rbonilla          #+#    #+#             */
+/*   Updated: 2022/09/28 10:32:44 by rbonilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	a;
-	size_t	result;
+	size_t	i;
+	int		a;
 
 	a = 0;
-	result = 0;
-	while ((s1[a] != 0 || s2[a] != 0) && a < n)
+	i = 0;
+	if ((!s1 && !s2) || n == 0)
+		return (0);
+	while (n > 0)
 	{
-		if (s1[a] == s2[a])
-			a++;
+		if (((unsigned const char *)s1)[i] == ((unsigned const char *)s2)[i])
+		{
+			i++;
+			n--;
+		}
 		else
 		{
-			result = ((unsigned char *)s1)[a] - ((unsigned char *)s2)[a];
-			return (result);
+			a = ((unsigned const char *)s1)[i] - ((unsigned const char *)s2)[i];
+			return (a);
 		}
 	}
 	return (0);
