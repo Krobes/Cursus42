@@ -1,16 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbonilla <rbonilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 12:50:51 by rbonilla          #+#    #+#             */
-/*   Updated: 2022/10/04 11:44:34 by rbonilla         ###   ########.fr       */
+/*   Created: 2022/10/04 12:29:25 by rbonilla          #+#    #+#             */
+/*   Updated: 2022/10/04 12:53:47 by rbonilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*char	**ft_split(char const *s, char c)
-{
+#include "libft.h"
 
-}*/
+int	ft_lstsize(t_list *lst)
+{
+	int		i;
+
+	i = 0;
+	while (lst)
+	{
+		i++;
+		lst = lst -> next;
+	}
+	return (i);
+}

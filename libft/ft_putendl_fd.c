@@ -1,16 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbonilla <rbonilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 12:50:51 by rbonilla          #+#    #+#             */
-/*   Updated: 2022/10/04 11:44:34 by rbonilla         ###   ########.fr       */
+/*   Created: 2022/10/03 13:27:17 by rbonilla          #+#    #+#             */
+/*   Updated: 2022/10/03 13:35:12 by rbonilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*char	**ft_split(char const *s, char c)
-{
+#include "libft.h"
 
-}*/
+void	ft_putendl_fd(char *s, int fd)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		write (fd, &s[i], 1);
+		i++;
+	}
+	write (fd, "\n", 1);
+}

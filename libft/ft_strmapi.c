@@ -1,16 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbonilla <rbonilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 12:50:51 by rbonilla          #+#    #+#             */
-/*   Updated: 2022/10/04 11:44:34 by rbonilla         ###   ########.fr       */
+/*   Created: 2022/10/03 12:16:42 by rbonilla          #+#    #+#             */
+/*   Updated: 2022/10/03 12:40:31 by rbonilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*char	**ft_split(char const *s, char c)
-{
+#include "libft.h"
 
-}*/
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	unsigned int	i;
+	char			*s2;
+
+	i = 0;
+	s2 = malloc ((ft_strlen(s) + 1) * sizeof(char));
+	if (!s2)
+		return (0);
+	while (s[i])
+	{
+		s2[i] = f(i, s[i]);
+		i++;
+	}
+	s2[i] = '\0';
+	return (s2);
+}

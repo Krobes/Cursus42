@@ -1,16 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbonilla <rbonilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 12:50:51 by rbonilla          #+#    #+#             */
-/*   Updated: 2022/10/04 11:44:34 by rbonilla         ###   ########.fr       */
+/*   Created: 2022/10/03 12:40:51 by rbonilla          #+#    #+#             */
+/*   Updated: 2022/10/03 13:08:48 by rbonilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*char	**ft_split(char const *s, char c)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
+	unsigned int	i;
 
-}*/
+	i = 0;
+	while (s[i])
+	{
+		f(i, &s[i]);
+		i++;
+	}
+	s[i] = '\0';
+}
