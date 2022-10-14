@@ -6,33 +6,33 @@
 /*   By: rbonilla <rbonilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:50:51 by rbonilla          #+#    #+#             */
-/*   Updated: 2022/10/07 14:04:13 by rbonilla         ###   ########.fr       */
+/*   Updated: 2022/10/10 13:01:24 by rbonilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_countwords(char *s, char c);
-char	*ft_lenwords(char *s, int aux, char c);
-int	ft_memory(char *s, int aux, char c);
-int	ft_position(char *s, int pos, char c);
+static int	ft_countwords(char *s, char c);
+static char	*ft_lenwords(char *s, int aux, char c);
+static int	ft_memory(char *s, int aux, char c);
+static int	ft_position(char *s, int pos, char c);
 
 char	**ft_split(char const *s, char c)
 {
 	char	**final;
-	int	words;
-	int	x;
-	int	i;
-	int	pos;
+	int		words;
+	int		x;
+	int		i;
+	int		pos;
 
 	i = 0;
 	pos = 0;
 	words = ft_countwords((char *)s, c);
-	final = (char **)malloc((sizeof (char *) * words + 1));
+	final = (char **)malloc((sizeof (char *) * (words + 1)));
 	if (!final)
 		return (0);
 	x = 0;
-	while (x <= words)
+	while (x < words)
 	{
 		final[x] = ft_lenwords((char *)s, pos, c);
 		i = ft_position((char *)s, pos, c);
@@ -43,7 +43,7 @@ char	**ft_split(char const *s, char c)
 	return (final);
 }
 
-int	ft_countwords(char *s, char c)
+static int	ft_countwords(char *s, char c)
 {
 	int	i;
 	int	word;
@@ -56,7 +56,7 @@ int	ft_countwords(char *s, char c)
 		{
 			word++;
 			i++;
-			while (s[i] != c)
+			while (s[i] != c && s[i])
 				i++;
 		}
 		else
@@ -65,11 +65,11 @@ int	ft_countwords(char *s, char c)
 	return (word);
 }
 
-char	*ft_lenwords(char *s, int aux, char c)
+static char	*ft_lenwords(char *s, int aux, char c)
 {
 	char	*final;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (s[aux] && s[aux] == c)
@@ -77,8 +77,8 @@ char	*ft_lenwords(char *s, int aux, char c)
 	j = ft_memory(s, aux, c);
 	final = (char *)malloc(sizeof(char) * j + 1);
 	if (!final)
-		return(0);
-	while (s[aux] != c)
+		return (0);
+	while (s[aux] != c && s[aux])
 	{
 		final[i] = s[aux];
 		i++;
@@ -88,12 +88,12 @@ char	*ft_lenwords(char *s, int aux, char c)
 	return (final);
 }
 
-int	ft_memory(char *s, int aux, char c)
+static int	ft_memory(char *s, int aux, char c)
 {
 	int	i;
 
 	i = 0;
-	while (s[aux] != c)
+	while (s[aux] != c && s[aux])
 	{
 		i++;
 		aux++;
@@ -101,11 +101,11 @@ int	ft_memory(char *s, int aux, char c)
 	return (i);
 }
 
-int	ft_position(char *s, int pos, char c)
+static int	ft_position(char *s, int pos, char c)
 {
-	while (s[pos] == c)
+	while (s[pos] == c && s[pos])
 		pos++;
-	while (s[pos] != c)
+	while (s[pos] != c && s[pos])
 		pos++;
 	return (pos);
 }

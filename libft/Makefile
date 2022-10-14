@@ -6,7 +6,7 @@
 #    By: rbonilla <rbonilla@42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/22 13:27:51 by rbonilla          #+#    #+#              #
-#    Updated: 2022/10/04 13:20:08 by rbonilla         ###   ########.fr        #
+#    Updated: 2022/10/12 11:43:32 by rbonilla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,12 +46,16 @@ CFILES = ft_isalpha.c\
 		 ft_putnbr_fd.c
 
 
-CBONUS = ft_lstnew.c\
-		 ft_lstadd_front.c\
-		 ft_lstsize.c\
-		 ft_lstlast.c\
-		 ft_lstadd_back.c
-
+CBONUS = ft_lstnew_bonus.c\
+		 ft_lstadd_front_bonus.c\
+		 ft_lstsize_bonus.c\
+		 ft_lstlast_bonus.c\
+		 ft_lstadd_back_bonus.c\
+		 ft_lstdelone_bonus.c\
+		 ft_lstclear_bonus.c\
+		 ft_lstiter_bonus.c\
+		 ft_lstmap_bonus.c
+	
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror

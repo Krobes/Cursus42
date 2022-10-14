@@ -6,41 +6,44 @@
 /*   By: rbonilla <rbonilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:52:32 by rbonilla          #+#    #+#             */
-/*   Updated: 2022/10/03 12:15:55 by rbonilla         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:16:00 by rbonilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_ndigits(long aux);
-static void	*ft_convert(char *s, int pos, int dig, long aux);
+static int	ft_ndigits(long int aux);
 
 char	*ft_itoa(int n)
 {
-	char		*s;
-	int			pos;
-	int			dig;
-	long		aux;
+	char	*s;
+	int		pos;
+	long	aux;
+	int		len;
 
-	dig = 0;
 	aux = n;
-	s = malloc((ft_ndigits(aux) + 1) * sizeof(char));
+	len = ft_ndigits(aux);
+	s = (char *)malloc((len + 1) * sizeof(char));
 	if (!s)
-		return (0);
-	s[ft_ndigits(aux)] = '\0';
-	if (n == 0)
-	{
-		s[0] = '0';
-		return (s);
-	}
+		return (NULL);
 	if (n < 0)
+	{
+		aux = aux * -1;
 		s[0] = '-';
-	pos = ft_ndigits(aux) - 1;
-	ft_convert(s, pos, dig, aux);
+	}
+	pos = len - 1;
+	if (aux == 0)
+		s[0] = '0';
+	while (aux > 0)
+	{
+		s[pos--] = (aux % 10) + '0';
+		aux = aux / 10;
+	}
+	s[len] = '\0';
 	return (s);
 }
 
-static int	ft_ndigits(long aux)
+static int	ft_ndigits(long int aux)
 {
 	int	n_dig;
 	int	dig;
@@ -60,18 +63,4 @@ static int	ft_ndigits(long aux)
 		aux = aux / 10;
 	}
 	return (n_dig);
-}
-
-static void	*ft_convert(char *s, int pos, int dig, long aux)
-{
-	while (pos >= 0 && s[pos] != '-')
-	{
-		dig = aux % 10;
-		aux = aux / 10;
-		if (dig < 0)
-			dig = dig * -1;
-		s[pos] = dig + '0';
-		pos--;
-	}
-	return (s);
 }
